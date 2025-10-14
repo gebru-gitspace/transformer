@@ -19,3 +19,14 @@ GPT_CONFIG = {
     "dropout_rate": 0.1,   # dropout probability
     "qkv_bias": False       # whether to include bias in QKV projections
 }
+
+BERT_CONFIG = {
+    "vocab_size": 30522,   # vocabulary size (e.g., BERT-base)
+    "max_len": 512,        # maximum sequence length
+    "emb_dim": 768,        # embedding dimension
+    "n_heads": 12,         # number of attention heads
+    "n_layers": 12,        # number of transformer layers
+    "dropout_rate": 0.1,   # dropout probability
+    "intermediate_dim": 3072,  # feed-forward hidden layer size
+    "qkv_bias": True       # whether to include bias in QKV projections
+}
