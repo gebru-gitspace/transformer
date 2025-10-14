@@ -30,3 +30,24 @@ BERT_CONFIG = {
     "intermediate_dim": 3072,  # feed-forward hidden layer size
     "qkv_bias": True       # whether to include bias in QKV projections
 }
+train_config = {
+    "vocab_size": None,           # set after loading tokenizer
+    "context_len": 1024,
+    "emb_dim": 768,
+    "n_heads": 12,
+    "n_layers": 12,
+    "dropout_rate": 0.1,
+    "qkv_bias": False,
+    # training hyperparams
+    "batch_size": 4,              # per step micro-batch (actual batch = batch_size * grad_accum)
+    "grad_accum_steps": 8,        # to emulate larger batch without blowing GPU mem
+    "learning_rate": 3e-4,
+    "weight_decay": 0.1,
+    "max_iters": 200000,
+    "eval_interval": 2000,
+    "save_interval": 5000,
+    "lr_warmup_iters": 2000,
+    "max_grad_norm": 1.0,
+    "use_fp16": True,
+    "context_stride": 1,          # how many tokens to shift between blocks; 1 -> sliding window
+}
