@@ -10,3 +10,12 @@ n_head = 6
 n_layer = 6
 dropout = 0.2
 # ------------
+GPT_CONFIG = {
+    "vocab_size": 16000,   # vocabulary size
+    "context": 1024,       # context length (number of tokens)
+    "emb_dim": 768,        # embedding dimension
+    "n_heads": 12,         # number of attention heads
+    "n_layers": 12,        # number of transformer layers
+    "dropout_rate": 0.1,   # dropout probability
+    "qkv_bias": False       # whether to include bias in QKV projections
+}
