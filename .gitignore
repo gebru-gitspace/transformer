@@ -1,0 +1,92 @@
+# ===============================
+# Python cache & environment files
+# ===============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# ===============================
+# Virtual environments
+# ===============================
+venv/
+env/
+ENV/
+.venv/
+.ipynb_checkpoints/
+
+# ===============================
+# IDE / Editor files
+# ===============================
+.vscode/
+.idea/
+*.iml
+
+# ===============================
+# Tokenizer / model artifacts
+# ===============================
+tokenizers/
+checkpoints/
+runs/
+logs/
+outputs/
+results/
+*.bin
+*.pt
+*.ckpt
+*.onnx
+*.h5
+*.tflite
+
+# ===============================
+# Datasets and temporary files
+# ===============================
+data/
+datasets/
+tig_dataset/
+*.csv
+*.tsv
+*.jsonl
+*.zip
+*.tar.gz
+
+# ===============================
+# OS files
+# ===============================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===============================
+# Hugging Face / Transformers
+# ===============================
+cache/
+.huggingface/
+transformers_cache/
+*.lock
+
+# ===============================
+# Notebooks and reports
+# ===============================
+*.ipynb
+notebooks/
+reports/
+
+# ===============================
+# Environment config files
+# ===============================
+.env
+*.env
+*.ini
+config.json

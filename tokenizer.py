@@ -142,6 +142,7 @@ def main():
         # Directory: iterate over files
         for file_name in os.listdir(data_path):
             file_path = os.path.join(data_path, file_name)
+            print(f"Processing file: {file_name}")
             if not os.path.isfile(file_path):
                 continue
             try:
@@ -161,9 +162,13 @@ def main():
     tig_dataset=Dataset.from_dict(tig_dataset)
     print("Datasets ready! Sentences: ",len(all_lines))
 
-    #tokenizer=tokenizer_tig.train_tokenizer(dataset=tig_dataset)
+    tokenizer=tokenizer_tig.train_tokenizer(dataset=tig_dataset)
 
-    #tokenizer.save_pretrained("/home/aberhe/Projects/SANTAL/Course/data/tokenizers/Tig_"+tokenizer_name+"_"+str(vocab_size))
+    save_dir = f"./tokenizers/Tig_{tokenizer_name}_{vocab_size}"
+    os.makedirs(save_dir, exist_ok=True)
+    tokenizer.save_pretrained(save_dir)
+    print(f"Tokenizer saved to {save_dir}")
+
 
 if __name__ == "__main__":
     main()
