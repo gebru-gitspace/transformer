@@ -80,7 +80,7 @@ transformers_cache/
 # ===============================
 # Notebooks and reports
 # ===============================
-building_Tig_gpt.ipynb
+# *.ipynb
 notebooks/
 reports/
 
