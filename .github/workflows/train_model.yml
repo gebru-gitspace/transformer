@@ -1,0 +1,54 @@
+name: Train Transformers
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  setup-and-train:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        model: [bert, gpt]
+
+    steps:
+    # Step 1: Checkout repo
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Python
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11
+
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Step 4: Download any dataset if needed
+    # (Optional) Example for Kaggle or remote datasets
+    #- name: Download dataset
+    #  run: python scripts/download_dataset.py
+
+    # Step 5: Train the model
+    - name: Train ${{ matrix.model }}
+      run: |
+        if [ "${{ matrix.model }}" == "bert" ]; then
+          python scripts/train_bert.py --data_path ./data/bert
+        else
+          python scripts/train_gpt.py --data_path ./data/gpt
+        fi
+
+    # Step 6: Upload model artifacts
+    - name: Upload model checkpoint
+      uses: actions/upload-artifact@v3
+      with:
+        name: ${{ matrix.model }}_checkpoint
+        path: |
+          checkpoints/*
