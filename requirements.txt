@@ -3,3 +3,6 @@ tokenizers
 transformers
 argparse
 datasets
+tqdm
+os
+pathlib
