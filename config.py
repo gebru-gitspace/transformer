@@ -9,6 +9,10 @@ n_embd = 384
 n_head = 6
 n_layer = 6
 dropout = 0.2
+
+
+num_epochs = 3
+log_interval = 50
 # ------------
 GPT_CONFIG = {
     "vocab_size": 16000,   # vocabulary size
