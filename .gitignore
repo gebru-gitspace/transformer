@@ -38,6 +38,7 @@ ENV/
 # ===============================
 tokenizers/
 checkpoints/
+saved_models/
 runs/
 logs/
 outputs/
@@ -79,7 +80,7 @@ transformers_cache/
 # ===============================
 # Notebooks and reports
 # ===============================
-*.ipynb
+building_Tig_gpt.ipynb
 notebooks/
 reports/
 
