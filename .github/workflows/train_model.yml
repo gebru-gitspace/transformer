@@ -45,9 +45,9 @@ jobs:
           python scripts/train_gpt.py --data_path ./data/gpt
         fi
 
-    # Step 6: Upload model artifacts
+    # Step 6: Upload model artifacts (updated to v4)
     - name: Upload model checkpoint
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.model }}_checkpoint
         path: |
