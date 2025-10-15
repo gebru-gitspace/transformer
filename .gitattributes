@@ -1,1 +1,2 @@
+tig_dataset/*.txt filter=lfs diff=lfs merge=lfs -text
 tig_dataset/tvml_t.txt filter=lfs diff=lfs merge=lfs -text
