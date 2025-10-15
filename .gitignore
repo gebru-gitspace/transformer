@@ -55,7 +55,8 @@ results/
 # ===============================
 data/
 datasets/
-tig_dataset/
+tig_dataset/tv*
+tig_dataset/x*
 *.csv
 *.tsv
 *.jsonl
