@@ -26,25 +26,22 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install jupyter nbconvert  # Needed if running notebooks
 
-    # Step 4: Download any dataset if needed
-    # (Optional)
-    #- name: Download dataset
-    #  run: python scripts/download_dataset.py
-
-    # Step 5: Build & Train BERT
-    - name: Build & Train BERT
+    # Step 4: Run GPT training
+    - name: Train GPT
       run: |
-        jupyter nbconvert --to script scripts/build_bert.ipynb --stdout | python
+        jupyter nbconvert --to notebook --execute build_gpt.ipynb --output /dev/null
 
-    # Step 6: Build & Train GPT
-    - name: Build & Train GPT
+    # Step 5: Run BERT training
+    - name: Train BERT
       run: |
-        jupyter nbconvert --to script scripts/build_gpt.ipynb --stdout | python
+        jupyter nbconvert --to notebook --execute build_bert.ipynb --output /dev/null
 
-    # Step 7: Upload model artifacts
-    - name: Upload model checkpoints
+   
+    # Step 6: Upload model artifacts
+    - name: Upload checkpoints
       uses: actions/upload-artifact@v4
       with:
-        name: checkpoints
+        name: trained_models
         path: checkpoints/*
