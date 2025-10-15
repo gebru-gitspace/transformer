@@ -1,9 +1,9 @@
-name: Train Transformers
+name: Train model
 
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch: # Allows manual trigger
 
 jobs:
@@ -40,9 +40,9 @@ jobs:
     - name: Train ${{ matrix.model }}
       run: |
         if [ "${{ matrix.model }}" == "bert" ]; then
-          python scripts/train_bert.py --data_path ./data/bert
+          python build_bert.ipynb
         else
-          python scripts/train_gpt.py --data_path ./data/gpt
+          python build_gpt.ipynb
         fi
 
     # Step 6: Upload model artifacts (updated to v4)
