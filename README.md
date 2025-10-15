@@ -1,4 +1,4 @@
-# Transformers models (GPT & BERT)
+# Transformer models (GPT & BERT) from scratch
   
 **Date:** October 2025  
 
@@ -94,5 +94,5 @@ train_model(
     optimizer=optimizer,
     num_epochs=5,
     gradient_accumulation_steps=4,
-    save_dir="./checkpoints"
+    save_dir
 )
