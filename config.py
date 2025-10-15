@@ -43,7 +43,7 @@ train_config = {
     "dropout_rate": 0.1,
     "qkv_bias": False,
     # training hyperparams
-    "batch_size": 4,              # per step micro-batch (actual batch = batch_size * grad_accum)
+    "batch_size": 2,              # per step micro-batch (actual batch = batch_size * grad_accum)
     "grad_accum_steps": 8,        # to emulate larger batch without blowing GPU mem
     "learning_rate": 3e-4,
     "weight_decay": 0.1,
@@ -54,4 +54,6 @@ train_config = {
     "max_grad_norm": 1.0,
     "use_fp16": True,
     "context_stride": 1,          # how many tokens to shift between blocks; 1 -> sliding window
+    "num_epochs": 3,
+    "gradient_accumulation_steps": 4,
 }
