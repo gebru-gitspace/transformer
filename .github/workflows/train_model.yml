@@ -1,4 +1,4 @@
-name: Train model
+name: Train Transformers
 
 on:
   push:
@@ -10,12 +10,8 @@ jobs:
   setup-and-train:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        model: [bert, gpt]
-
     steps:
-    # Step 1: Checkout repo
+    # Step 1: Checkout repository
     - name: Checkout repository
       uses: actions/checkout@v3
 
@@ -32,23 +28,23 @@ jobs:
         pip install -r requirements.txt
 
     # Step 4: Download any dataset if needed
-    # (Optional) Example for Kaggle or remote datasets
+    # (Optional)
     #- name: Download dataset
     #  run: python scripts/download_dataset.py
 
-    # Step 5: Train the model
-    - name: Train ${{ matrix.model }}
+    # Step 5: Build & Train BERT
+    - name: Build & Train BERT
       run: |
-        if [ "${{ matrix.model }}" == "bert" ]; then
-          python build_bert.ipynb
-        else
-          python build_gpt.ipynb
-        fi
+        jupyter nbconvert --to script scripts/build_bert.ipynb --stdout | python
 
-    # Step 6: Upload model artifacts (updated to v4)
-    - name: Upload model checkpoint
+    # Step 6: Build & Train GPT
+    - name: Build & Train GPT
+      run: |
+        jupyter nbconvert --to script scripts/build_gpt.ipynb --stdout | python
+
+    # Step 7: Upload model artifacts
+    - name: Upload model checkpoints
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.model }}_checkpoint
-        path: |
-          checkpoints/*
+        name: checkpoints
+        path: checkpoints/*
