@@ -55,5 +55,13 @@ train_config = {
     "use_fp16": True,
     "context_stride": 1,          # how many tokens to shift between blocks; 1 -> sliding window
     "num_epochs": 3,
-    "gradient_accumulation_steps": 4,
+    "gradient_accumulation_steps": 4
+}
+mini_config = {
+    'vocab_size': 50257,  # or tokenizer.vocab_size
+    'block_size': 128,
+    'n_layer': 6,
+    'n_head': 6,
+    'n_embd': 384,
+    'dropout': 0.1
 }
