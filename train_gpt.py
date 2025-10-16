@@ -161,7 +161,7 @@ model = GPT(config).to(device)
 optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
 
 # === Step 9: Minimal Training Loop ===
-max_iters = 200
+max_iters = 20
 gradient_accumulation_steps = 16
 
 for step in tqdm(range(max_iters)):
